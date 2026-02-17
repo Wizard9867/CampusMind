@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusMind</title>
+
+    <link rel="stylesheet" href="dashboard.css"> 
+</head>
+<script>
+function uploadNavigation(){
+    window.location.href="Upload.html";
+}
+
+async function loadStats() {
+    try {
+        const response = await fetch("http://localhost:3000/stats");
+        const data = await response.json();
+
+        document.getElementById("totalResources").textContent = data.totalResources;
+        document.getElementById("documentsCount").textContent = data.documents;
+
+    } catch (error) {
+        console.error("Error loading stats:", error);
+    }
+}
+
+loadStats();
+</script>
+<body>
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>CampusMind</h2>
+            <small>Intelligent Search</small>
+        </div>
+
+        <div class="nav">
+            <div class="nav-item active">Home</div>
+            <div class="nav-item">Search</div>
+            <div class="nav-item" onclick="uploadNavigation()">Upload</div>
+            <div class="nav-item">Collections</div>
+            <div class="nav-item">Analytics</div>
+        </div>
+
+    </div>
+
+    <div class="main-content">
+        <div class="badge">
+            AI-Powered Knowledge Discovery
+        </div>
+
+        <h1 class="hero-title">
+            Find the knowledge you need, instantly
+        </h1>
+        <p class="hero-subtitle">
+            Unified search across lectures, papers, slides and more.
+        </p>
+        <div class="search-container">
+            <input 
+                type="text" 
+                class="search-input"
+                placeholder="Ask anything... e.g. Explain neural networks"
+            >
+            <button class="search-button">
+                Search
+            </button>
+
+        </div>
+        <div class="stats-container">
+            <div class="card">
+                <h3 id="totalResources">0</h3>
+                <p>Total Resources</p>
+            </div>
+
+            <div class="card">
+                <h3>0</h3>
+                <p>Video Lectures</p>
+            </div>
+
+            <div class="card" >
+                <h3 id="documentsCount">0</h3>
+                <p>Documents</p>
+            </div>
+
+            <div class="card">
+                <h3>0</h3>
+                <p>Departments</p>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

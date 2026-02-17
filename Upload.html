@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Document</title>
+    <link rel="stylesheet" href="upload.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+
+<body>
+    <div class="sidebar">
+
+        <div class="logo-box">
+            <h2>CampusMind</h2>
+            <small>Intelligent Search</small>
+        </div>
+
+        <div class="nav">
+            <div class="nav-item" onclick="goHome()" id="homebtn">Home</div>
+            <div class="nav-item" id="searchbtn">Search</div>
+            <div class="nav-item active">Upload</div>
+            <div class="nav-item" id="collecbtn">Collections</div>
+            <div class="nav-item" id="analytisbtn">Analytics</div>
+        </div>
+
+    </div>
+    <div class="main-content">
+
+        <h1 class="hero-title">Upload Document</h1>
+
+        <p class="hero-subtitle">
+            Add new academic resources to the knowledge system.
+        </p>
+
+    <div class="upload-container">
+
+        <form id="uploadForm">
+
+            <div class="file-upload">
+                <input type="file" id="fileInput" name="file" hidden>
+                    <label for="fileInput" class="custom-file-upload">
+                         Click to Browse Files
+                    </label>
+
+                <p id="fileName">No file selected</p>
+            </div>
+            <button type="submit" class="upload-submit-btn">
+                Submit File
+            </button>
+        </form>
+    </div>
+
+
+    </div>
+
+    <script>
+    const fileInput = document.getElementById("fileInput");
+
+    fileInput.addEventListener("change", function () {
+    const fileName = this.files[0]?.name || "No file selected";
+    document.getElementById("fileName").textContent = fileName;
+    });
+
+    const uploadForm = document.getElementById("uploadForm");
+
+    uploadForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    if (fileInput.files.length === 0) {
+        alert("Please select a file.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", fileInput.files[0]);
+
+    try {
+        const response = await fetch("http://localhost:3000/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        uploadForm.reset();
+        document.getElementById("fileName").textContent = "No file selected";
+
+    } catch (error) {
+        console.error(error);
+        alert("Upload failed.");
+    }
+    });
+    function goHome(){
+        window.location.href="Dashboard.html";
+    }
+</script>
+
+</body>
+</html>
