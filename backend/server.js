@@ -3,7 +3,9 @@ const multer = require("multer");
 const cors = require("cors");
 const fs = require("fs");
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
