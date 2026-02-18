@@ -2,6 +2,14 @@ const express = require("express");
 const multer = require("multer");
 const cors = require("cors");
 const fs = require("fs");
+const path = require("path");
+
+const uploadsPath = path.join(__dirname, "uploads");
+
+// Create uploads folder if it doesn't exist
+if (!fs.existsSync(uploadsPath)) {
+    fs.mkdirSync(uploadsPath);
+}
 const app = express();
 app.use(cors({
     origin: "*"
@@ -9,7 +17,7 @@ app.use(cors({
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "uploads/");
+        cb(null, uploadsPath);
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.originalname);
@@ -30,7 +38,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 app.get("/stats", (req, res) => {
-    const files = fs.readdirSync("uploads/");
+    const files = fs.readdirSync(uploadsPath);
 
     res.json({
         totalResources: files.length,
