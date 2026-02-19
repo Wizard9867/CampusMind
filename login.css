@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #3b0a45, #6e2c5f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 40px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.subtitle {
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.role-toggle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.2);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.role-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.role-btn.active {
+    background: rgba(255,255,255,0.2);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #5a1f4d;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-btn:hover {
+    background: #7a2d65;
+}
+
+.error {
+    color: #ffaaaa;
+    margin-top: 10px;
+}
