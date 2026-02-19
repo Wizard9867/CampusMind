@@ -36,11 +36,11 @@ async function login() {
             localStorage.setItem("role", data.role);
 
             if (data.role === "student") {
-                window.location.href = "student-dashboard.html";
+                window.location.href = "Students/student-dashboard.html";
             } else if (data.role === "faculty") {
-                window.location.href = "faculty-dashboard.html";
+                window.location.href = "facultys/facultydashboard.html";
             } else {
-                window.location.href = "admin-dashboard.html";
+                window.location.href = "admin/admin-dashboard.html";
             }
 
         } else {

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Documents | CampusMind</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>CampusMind</h2>
+        <p class="portal">Faculty Portal</p>
+
+        <nav>
+            <a href="facultydashboard.html">Dashboard</a>
+            <a href="search.html">Search</a>
+            <a href="courses.html">My Courses</a>
+            <a href="upload.html">Upload Resource</a>
+            <a class="active" href="manage.html">Manage Docs</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <main>
+
+        <div class="page-header">
+            <h1>Manage Documents</h1>
+            <p class="subtitle">
+                Edit, organize, or remove uploaded learning resources
+            </p>
+        </div>
+
+        <div class="manage-card">
+
+            <div class="doc-row header">
+                <span>Title</span>
+                <span>Course</span>
+                <span>Type</span>
+                <span>Views</span>
+                <span>Actions</span>
+            </div>
+
+            <div class="doc-row">
+                <span>Intro to ML Algorithms</span>
+                <span>CS301</span>
+                <span class="badge pdf">PDF</span>
+                <span>124</span>
+
+                <div class="actions">
+                    <a href="viewer.html" class="action-btn view">View</a>
+                    <a href="#" class="action-btn edit">Edit</a>
+                    <a href="#" class="action-btn delete">Delete</a>
+                </div>
+            </div>
+
+            <div class="doc-row">
+                <span>Neural Networks Diagram</span>
+                <span>CS301</span>
+                <span class="badge image">IMG</span>
+                <span>89</span>
+
+                <div class="actions">
+                    <a href="viewer.html" class="action-btn view">View</a>
+                    <a href="#" class="action-btn edit">Edit</a>
+                    <a href="#" class="action-btn delete">Delete</a>
+                </div>
+            </div>
+
+            <div class="doc-row">
+                <span>Gradient Descent Notes</span>
+                <span>CS301</span>
+                <span class="badge notes">NOTES</span>
+                <span>56</span>
+
+                <div class="actions">
+                    <a href="viewer.html" class="action-btn view">View</a>
+                    <a href="#" class="action-btn edit">Edit</a>
+                    <a href="#" class="action-btn delete">Delete</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<div class="document-page">
+
+    <div class="doc-header">
+        <h2 id="docTitle"></h2>
+        <button class="download-btn">Download PDF</button>
+    </div>
+
+    <div class="doc-layout">
+
+        <div class="doc-view">
+            <iframe id="pdfViewer"></iframe>
+        </div>
+
+        <div class="doc-side">
+
+            <div class="ai-summary">
+                <h3>AI Summary</h3>
+                <p>
+                    AI-generated summary of the document will appear here.
+                    This section explains important concepts extracted
+                    automatically by UniSearch AI.
+                </p>
+            </div>
+
+            <div class="related-docs">
+                <h3>Related Documents</h3>
+                <div>ML Algorithms Cheat Sheet</div>
+                <div>Deep Learning Basics</div>
+                <div>Python ML Examples</div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const file = params.get("file");
+const title = params.get("title");
+
+document.getElementById("pdfViewer").src = file;
+document.getElementById("docTitle").innerText = title;
+</script>

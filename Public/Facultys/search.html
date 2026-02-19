@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusMind | Search</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>CampusMind</h2>
+        <p class="portal">Faculty Portal</p>
+
+        <nav>
+            <a href="facultydashboard.html">Dashboard</a>
+            <a href="search.html" class="active">Search</a>
+            <a href="courses.html">My Courses</a>
+            <a href="upload.html">Upload Resource</a>
+            <a href="manage.html">Manage Docs</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search resources, topics, or courses...">
+        </div>
+
+        <div class="search-layout">
+
+            <div class="filters card">
+                <h3>Filters</h3>
+
+                <p class="filter-title">Department</p>
+                <label><input type="checkbox"> Computer Science</label>
+                <label><input type="checkbox"> Mathematics</label>
+                <label><input type="checkbox"> Electronics</label>
+                <label><input type="checkbox"> Data Science</label>
+
+                <p class="filter-title">Resource Type</p>
+                <select>
+                    <option>All</option>
+                    <option>PDF</option>
+                    <option>Video</option>
+                    <option>Image</option>
+                    <option>Notes</option>
+                </select>
+
+                <p class="filter-title">Year</p>
+                <select>
+                    <option>2026</option>
+                    <option>2025</option>
+                    <option>2024</option>
+                </select>
+            </div>
+
+            <div class="results">
+
+                <div class="results-header">
+                    <h3>Search Results</h3>
+                    <span>Sorted by Relevance</span>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-top">
+                        <span class="badge pdf">PDF</span>
+                        <span class="date">Oct 12, 2025</span>
+                    </div>
+
+                    <h2>Foundations of Machine Learning</h2>
+                    <p>
+                        Lecture notes covering regression, classification,
+                        and evaluation metrics with practical examples.
+                    </p>
+
+                    <div class="tags">
+                        <span>CS301</span>
+                        <span>ML</span>
+                        <span>Lecture Notes</span>
+                    </div>
+
+                    <button class="view-btn">View</button>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-top">
+                        <span class="badge image">Image</span>
+                        <span class="date">Oct 18, 2025</span>
+                    </div>
+
+                    <h2>Deep Learning Model Architecture</h2>
+                    <p>
+                        Visual diagram explaining convolution layers,
+                        activation flow, and training pipeline.
+                    </p>
+
+                    <div class="tags">
+                        <span>CS402</span>
+                        <span>Diagram</span>
+                        <span>Reference</span>
+                    </div>
+
+                    <button class="view-btn">View</button>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-top">
+                        <span class="badge video">Video</span>
+                        <span class="date">Nov 02, 2025</span>
+                    </div>
+
+                    <h2>Gradient Descent Explained</h2>
+                    <p>
+                        Recorded lecture explaining optimization techniques
+                        with animated visualization examples.
+                    </p>
+
+                    <div class="tags">
+                        <span>AI</span>
+                        <span>Optimization</span>
+                        <span>Lecture</span>
+                    </div>
+
+                    <button class="view-btn">View</button>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-top">
+                        <span class="badge notes">Notes</span>
+                        <span class="date">Sep 20, 2025</span>
+                    </div>
+
+                    <h2>Neural Network Quick Revision</h2>
+                    <p>
+                        Compact summary sheet covering forward propagation,
+                        backpropagation, and loss functions.
+                    </p>
+
+                    <div class="tags">
+                        <span>Revision</span>
+                        <span>NN</span>
+                        <span>Exam Prep</span>
+                    </div>
+
+                    <button class="view-btn">View</button>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="search.js"></script>
+
+</body>
+</html>

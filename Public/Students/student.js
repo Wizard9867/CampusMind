@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem(KEY, JSON.stringify(data));
     }
 
-    /* ================= RENDER ================= */
-
     function renderCollections() {
 
         const grid = document.getElementById("collectionsGrid");
@@ -63,8 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /* ================= CREATE COLLECTION ================= */
-
     window.openCreateModal = function () {
         document.getElementById("createModal").style.display = "flex";
     };
@@ -93,8 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
         closeCreateModal();
         renderCollections();
     };
-
-    /* ================= UPLOAD RESOURCE ================= */
 
     window.openUploadModal = function (index) {
         currentCollectionIndex = index;
@@ -127,8 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
         renderCollections();
     };
 
-    /* ================= DELETE COLLECTION ================= */
-
     window.deleteCollection = function (index) {
 
         const data = getData();
@@ -139,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderCollections();
 });
-/* ================= SEARCH ================= */
 
 window.searchResources = function () {
 
@@ -183,7 +174,6 @@ window.searchResources = function () {
         `;
     });
 };
-/* ================= PROFILE ================= */
 
 const PROFILE_KEY = "studentProfile";
 
@@ -250,8 +240,6 @@ window.saveProfile = function () {
 };
 
 renderProfile();
-
-/* ================= CHART ================= */
 
 function renderChart() {
 

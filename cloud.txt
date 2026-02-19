@@ -1,2 +1,15 @@
 694521367597919
 coUk8k99vNcCe068FegjGW0E9SE
+
+Student :- 
+rohit@test.com
+123456
+
+admin:-
+{
+    "email": "rohit123@gmail.com",
+    "password": "Salap@123"
+}
+teacher:-
+ "email": "maithili034@gmail.com",
+  "password": "Maithili@123"

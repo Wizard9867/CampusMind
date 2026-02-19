@@ -1,4 +1,3 @@
-/* 1. Root Variables & Reset */
 :root {
     --bg-light: #FAE5D8;
     --plum-medium: #824D69;
@@ -12,7 +11,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* 2. Glassmorphism Panels */
 .glass-panel {
     background: var(--glass-white);
     backdrop-filter: blur(15px);
@@ -21,7 +19,6 @@
     box-shadow: 0 8px 32px rgba(82, 41, 89, 0.08);
 }
 
-/* 3. Sidebar & Navigation Styling */
 .sidebar {
     background: var(--plum-deep);
     transition: width 0.3s ease;
@@ -44,7 +41,6 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* 4. Content Visibility Transitions */
 .section-content {
     display: none;
     opacity: 0;
@@ -52,8 +48,7 @@
 
 .section-content.active {
     display: block;
-    /* Animation handled by GSAP in your script, 
-       but we provide a CSS fallback */
+
     animation: slideUp 0.5s ease forwards;
 }
 
@@ -62,7 +57,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 5. Hover Effects (Cards) */
 .card-pop {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -74,7 +68,6 @@
     border-color: var(--plum-medium);
 }
 
-/* 6. Custom Scrollbar for the Main Content */
 main::-webkit-scrollbar {
     width: 8px;
 }
@@ -89,7 +82,6 @@ main::-webkit-scrollbar-thumb {
     border: 2px solid var(--bg-light);
 }
 
-/* 7. Table Styling Fixes */
 table thead th {
     position: sticky;
     top: 0;
