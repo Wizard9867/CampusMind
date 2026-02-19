@@ -1,117 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CampusMind - Student Dashboard</title>
-    <link rel="stylesheet" href="student-dashboard.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="student.css">
 </head>
 <body>
-    <video autoplay muted loop playsinline class="bg-video">
-            <source src="assets/background3.mp4" type="video/mp4">
-    </video>
 
-<div class="dashboard">
+<div class="layout">
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-        <div class="brand-box">
-            <h2>CampusMind</h2>
-            <span>Student Portal</span>
-        </div>
+        <h2>UniSearch AI</h2>
+        <div class="subtitle">Student Portal</div>
 
-        <ul class="nav">
-            <li class="active">Dashboard</li>
-            <li>Search</li>
-            <li>My Subjects</li>
-            <li>My Collections</li>
-            <li>History</li>
-            <li>Profile</li>
-        </ul>
+        <a href="student-dashboard.html" class="nav-item active">Dashboard</a>
+        <a href="collections.html" class="nav-item">My Collections</a>
+        <a href="search.html" class="nav-item">Search</a>
+        <a href="profile.html" class="nav-item">Profile</a>
 
         <div class="logout">Logout</div>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div class="main">
+    <div class="main-content">
 
-        <!-- HEADER -->
-        <div class="top-section">
-            <div>
-                <h1>Hello, Alex</h1>
-                <p>Ready to explore knowledge today?</p>
+        <h1>Hello, Alex</h1>
+        <p style="opacity:0.7; margin-bottom:40px;">
+            Welcome back to your learning workspace.
+        </p>
+
+        <div class="dashboard-grid">
+
+            <!-- LEFT COLUMN -->
+            <div class="left-column">
+
+                <!-- Recommended -->
+                <div class="card">
+                    <h3>⭐ Recommended for You</h3>
+                    <br>
+                    <p><strong>Advanced Neural Networks</strong></p>
+                    <small>Lecture Note</small><br><br>
+
+                    <p><strong>Quantum Computing Basics</strong></p>
+                    <small>Video</small><br><br>
+
+                    <p><strong>Ethics in AI</strong></p>
+                    <small>Article</small>
+                </div>
+
+                <!-- Recently Viewed -->
+                <div class="card">
+                    <h3>🕒 Recently Viewed</h3>
+                    <br>
+                    <p><strong>Data Structures 101</strong></p>
+                    <small>2 hours ago</small><br><br>
+
+                    <p><strong>Calculus II Final Review</strong></p>
+                    <small>Yesterday</small>
+                </div>
+
+                <!-- Your Semester -->
+                <div class="card">
+                    <h3>📘 Your Semester</h3>
+                    <br>
+
+                    <p>Computer Science 301</p>
+                    <div style="background:rgba(255,255,255,0.1); height:8px; border-radius:10px; margin:6px 0 15px;">
+                        <div style="width:80%; height:100%; background:#9d4edd; border-radius:10px;"></div>
+                    </div>
+
+                    <p>Linear Algebra</p>
+                    <div style="background:rgba(255,255,255,0.1); height:8px; border-radius:10px; margin:6px 0 15px;">
+                        <div style="width:60%; height:100%; background:#9d4edd; border-radius:10px;"></div>
+                    </div>
+
+                    <p>Physics II</p>
+                    <div style="background:rgba(255,255,255,0.1); height:8px; border-radius:10px;">
+                        <div style="width:70%; height:100%; background:#9d4edd; border-radius:10px;"></div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="semester-box">
-                <span>Current Semester</span>
-                <h3>Spring 2026</h3>
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+
+                <div class="card">
+                    <h4>My Uploads</h4>
+                    <br>
+                    <h2>3 Files</h2>
+                </div>
+
+                <div class="card">
+                    <h4>Faculty Resources</h4>
+                    <br>
+                    <h2>12 Files</h2>
+                </div>
+
+                <div class="card">
+                    <h4>Current Semester</h4>
+                    <br>
+                    <h2>Spring 2026</h2>
+                </div>
+
             </div>
+
         </div>
 
-        <!-- SEARCH -->
-        <div class="search-container">
-            <input type="text" placeholder="Search for research papers, lectures, notes..." />
-        </div>
+        <!-- LEARNING ANALYTICS -->
+        <h2 style="margin-top:70px; margin-bottom:25px;">
+            📊 Learning Analytics
+        </h2>
 
-        <!-- CARDS ROW -->
-        <div class="card-row">
+        <div class="analytics-grid">
 
-            <div class="glass-card">
-                <h3>Recommended for You</h3>
-                <ul>
-                    <li>Advanced Neural Networks</li>
-                    <li>Quantum Computing Basics</li>
-                    <li>Ethics in AI</li>
-                </ul>
+            <div class="analytics-card">
+                <p>Hours Spent</p>
+                <h2>24.5</h2>
+                <small>+12%</small>
             </div>
 
-            <div class="glass-card">
-                <h3>Recently Viewed</h3>
-                <ul>
-                    <li>Data Structures 101</li>
-                    <li>Calculus II Final Review</li>
-                    <li>History of Art</li>
-                </ul>
+            <div class="analytics-card">
+                <p>Resources Read</p>
+                <h2>142</h2>
+                <small>+5%</small>
             </div>
 
-            <div class="glass-card">
-                <h3>Your Semester</h3>
-                <ul>
-                    <li>Computer Science 301</li>
-                    <li>Linear Algebra</li>
-                    <li>Physics II</li>
-                </ul>
+            <div class="analytics-card">
+                <p>Notes Created</p>
+                <h2>18</h2>
+                <small>+2</small>
             </div>
 
-        </div>
-
-        <!-- ANALYTICS -->
-        <div class="analytics-card">
-            <div class="analytics-header">
-                <h2>Learning Analytics</h2>
-                <span>View Full Report</span>
+            <div class="analytics-card">
+                <p>Avg. Quiz Score</p>
+                <h2>92%</h2>
+                <small>+3%</small>
             </div>
+            <div style="margin-top:50px;" class="card">
+    <h3>Learning Activity Overview</h3>
+    <br>
+    <canvas id="analyticsChart" height="100"></canvas>
+</div>
 
-            <div class="analytics-grid">
-                <div>
-                    <p>Hours Spent</p>
-                    <h1>24.5</h1>
-                </div>
-                <div>
-                    <p>Resources Read</p>
-                    <h1>142</h1>
-                </div>
-                <div>
-                    <p>Notes Created</p>
-                    <h1>18</h1>
-                </div>
-                <div>
-                    <p>Avg. Quiz Score</p>
-                    <h1>92%</h1>
-                </div>
-            </div>
+
         </div>
 
     </div>
+
 </div>
+<!-- Chart.js CDN -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="student.js"></script>
 
 </body>
 </html>

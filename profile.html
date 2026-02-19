@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>UniSearch AI</h2>
+        <div class="subtitle">Student Portal</div>
+
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="collections.html" class="nav-item">My Collections</a>
+        <a href="search.html" class="nav-item">Search</a>
+        <a href="profile.html" class="nav-item active">Profile</a>
+
+        <div class="logout">Logout</div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <h1>My Profile</h1>
+
+        <!-- PROFILE CARD -->
+        <div class="profile-card">
+
+            <div style="display:flex; align-items:center; gap:20px;">
+                <div style="
+                    width:90px;
+                    height:90px;
+                    border-radius:50%;
+                    background:linear-gradient(135deg,#7b2cbf,#9d4edd);
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    font-size:30px;
+                    font-weight:bold;">
+                    A
+                </div>
+
+                <div>
+                    <h2 id="profileName">Alex Johnson</h2>
+                    <p style="opacity:0.6;">Computer Science Student</p>
+                    <br>
+                    <button class="primary-btn" onclick="openEditModal()">
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ACADEMIC STATS -->
+        <div class="stats-card">
+            <h3>Academic Stats</h3>
+            <br>
+            <p>GPA: <strong id="profileGPA">3.8</strong></p>
+            <p>Credits Completed: <strong id="profileCredits">72</strong></p>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="stats-card">
+            <h3>Contact Information</h3>
+            <br>
+            <p>Email: <strong id="profileEmail">alex@email.com</strong></p>
+            <p>Phone: <strong id="profilePhone">+91 9876543210</strong></p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal-overlay">
+    <div class="modal-box">
+        <h3>Edit Profile</h3>
+
+        <input type="text" id="editName" placeholder="Full Name">
+        <input type="text" id="editEmail" placeholder="Email">
+        <input type="text" id="editPhone" placeholder="Phone">
+        <input type="text" id="editGPA" placeholder="GPA">
+        <input type="text" id="editCredits" placeholder="Credits">
+
+        <div class="modal-buttons">
+            <button class="primary-btn" onclick="saveProfile()">Save</button>
+            <button class="secondary-btn" onclick="closeEditModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="student.js"></script>
+</body>
+</html>

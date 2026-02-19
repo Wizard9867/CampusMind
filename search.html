@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <div class="sidebar">
+        <h2>UniSearch AI</h2>
+        <div class="subtitle">Student Portal</div>
+
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="collections.html" class="nav-item">My Collections</a>
+        <a href="search.html" class="nav-item active">Search</a>
+        <a href="profile.html" class="nav-item">Profile</a>
+
+        <div class="logout">Logout</div>
+    </div>
+
+    <div class="main-content">
+
+        <h1>Search Resources</h1>
+
+        <input type="text"
+               id="searchInput"
+               placeholder="Search resources..."
+               oninput="searchResources()"
+               style="margin:20px 0; padding:10px; width:300px; border-radius:8px; border:none;">
+
+        <div class="search-layout">
+
+            <!-- FILTERS -->
+            <div class="filter-panel">
+                <h3>Filters</h3>
+                <br>
+
+                <strong>Topic</strong><br>
+                <input type="checkbox" value="AI" onchange="searchResources()"> AI<br>
+                <input type="checkbox" value="Math" onchange="searchResources()"> Math<br>
+                <input type="checkbox" value="Physics" onchange="searchResources()"> Physics<br><br>
+
+                <strong>Content Type</strong><br>
+                <input type="checkbox" value="PDF" onchange="searchResources()"> PDF<br>
+                <input type="checkbox" value="PPT" onchange="searchResources()"> PPT<br>
+                <input type="checkbox" value="Video" onchange="searchResources()"> Video<br>
+            </div>
+
+            <!-- RESULTS -->
+            <div class="results-column" id="searchResults">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="student.js"></script>
+</body>
+</html>

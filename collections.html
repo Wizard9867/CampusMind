@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Collections</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <div class="sidebar">
+        <h2>UniSearch AI</h2>
+        <div class="subtitle">Student Portal</div>
+
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="collections.html" class="nav-item active">My Collections</a>
+        <a href="search.html" class="nav-item">Search</a>
+        <a href="profile.html" class="nav-item">Profile</a>
+
+        <div class="logout">Logout</div>
+    </div>
+
+    <div class="main-content">
+
+        <div class="page-header">
+            <h1>My Collections</h1>
+        </div>
+
+        <div class="collections-grid" id="collectionsGrid"></div>
+
+    </div>
+
+</div>
+
+<!-- CREATE COLLECTION MODAL -->
+<div id="createModal" class="modal-overlay">
+    <div class="modal-box">
+        <h3>Create Collection</h3>
+        <input type="text" id="collectionTitle" placeholder="Collection Title">
+        <input type="text" id="collectionDesc" placeholder="Description">
+        <div class="modal-buttons">
+            <button class="primary-btn" onclick="saveCollection()">Create</button>
+            <button class="secondary-btn" onclick="closeCreateModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- UPLOAD RESOURCE MODAL -->
+<div id="uploadModal" class="modal-overlay">
+    <div class="modal-box">
+        <h3>Upload Resource</h3>
+        <input type="text" id="resourceTitle" placeholder="Resource Title">
+        <input type="file" id="resourceFile">
+        <div class="modal-buttons">
+            <button class="primary-btn" onclick="saveResource()">Upload</button>
+            <button class="secondary-btn" onclick="closeUploadModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="student.js"></script>
+</body>
+</html>
