@@ -1,231 +1,171 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
+    margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #14002a, #2a004f);
-    color: white;
+    background: linear-gradient(135deg, #462275, #0c000c);
+    color: #FAE5D8;
+    height: 100vh;
 }
-
-.layout {
-    display: flex;
+.dashboard {
+     display: flex;
     min-height: 100vh;
-}
 
+}
+.upload-info {
+    font-size: 13px;
+    color: var(--soft-rose);
+}
 .sidebar {
     width: 260px;
-    background: linear-gradient(180deg, #1b0033, #250047);
-    padding: 30px 20px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #2A114B 0%, #180018 100%);
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
 }
 
-.sidebar h2 {
-    font-size: 22px;
-    margin-bottom: 5px;
-}
-
-.subtitle {
-    font-size: 13px;
-    color: #cfa9ff;
+.brand-box {
     margin-bottom: 40px;
 }
 
-.nav-item {
-    display: block;
-    padding: 14px 16px;
-    margin-bottom: 12px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #e0aaff;
-    transition: 0.3s;
+.brand-box h2 {
+    margin: 0;
 }
 
-.nav-item:hover {
-    background: rgba(157, 78, 221, 0.15);
-    color: white;
+.brand-box span {
+    color: #DFB6B2;
+    font-size: 13px;
 }
 
-.nav-item.active {
-    background: linear-gradient(135deg, #7b2cbf, #9d4edd);
-    box-shadow: 0 0 20px rgba(157,78,221,0.6);
-    color: white;
+.nav {
+    list-style: none;
+    padding: 0;
+    flex: 1;
+}
+
+.nav li {
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #DFB6B2;
+}
+
+.nav li:hover {
+    background: #522959;
+    color: #FAE5D8;
+}
+
+.nav .active {
+    background: #824D69;
+    color: #FAE5D8;
 }
 
 .logout {
-    margin-top: auto;
-    padding: 14px 16px;
-    border-radius: 12px;
-    color: #ffb3ff;
+    padding: 12px;
+    text-align: center;
+    background: #522959;
+    border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.logout:hover {
-    background: rgba(255, 0, 100, 0.15);
-}
-
-.main-content {
+.main {
     flex: 1;
     padding: 50px;
+    background: linear-gradient(135deg, #2A114B 0%, #180018 100%);
 }
 
-.page-header {
+/* HEADER */
+.top-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
 }
 
-.card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    transition: 0.3s;
+.top-section p {
+    color: #DFB6B2;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 30px rgba(157,78,221,0.4);
+.semester-box span {
+    font-size: 13px;
+    color: #DFB6B2;
 }
 
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-}
-
-.left-column {
+/* STATS */
+.stats-row {
     display: flex;
-    flex-direction: column;
     gap: 30px;
+    margin: 40px 0;
 }
 
-.right-column {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.analytics-grid {
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
-
-.analytics-card {
-    background: rgba(255,255,255,0.06);
+.stat-card {
+    flex: 1;
+    background: rgba(82,41,89,0.9);
     padding: 30px;
     border-radius: 20px;
     text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-.primary-btn {
-    background: linear-gradient(135deg, #7b2cbf, #9d4edd);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
+.stat-card h2 {
+    font-size: 32px;
+    margin: 0;
 }
 
-.primary-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(157,78,221,0.7);
+.stat-card p {
+    color: #DFB6B2;
 }
 
-.collections-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.collection-card {
-    background: rgba(255,255,255,0.05);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: 0.3s;
-}
-
-.collection-card:hover {
-    transform: translateY(-6px);
-}
-
-.create-card {
-    border: 2px dashed rgba(255,255,255,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.search-layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-}
-
-.filter-panel {
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 20px;
-}
-
-.results-column {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.profile-card {
-    background: rgba(255,255,255,0.05);
-    padding: 40px;
+/* RECENT */
+.recent-card {
+    background: rgba(82,41,89,0.92);
+    padding: 35px;
     border-radius: 25px;
-    margin-bottom: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
-.stats-card {
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 20px;
-    margin-bottom: 25px;
-}
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
+.recent-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.modal-box {
-    background: #2a004f;
-    padding: 30px;
-    border-radius: 20px;
-    width: 350px;
+.recent-header span {
+    color: #DFB6B2;
+    cursor: pointer;
+}
+
+.activity-item {
+    background: rgba(223, 182, 178, 0.07);
+    padding: 28px 30px;
+    border-radius: 22px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(223,182,178,0.15);
+
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    justify-content: center;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.45),
+        inset 0 0 0 1px rgba(255,255,255,0.03);
+
+    transition: 0.3s ease;
+
 }
 
-.modal-box input {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
+.activity-item:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.55),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
-.modal-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+.activity-item span {
+    font-size: 13px;
+    color: #DFB6B2;
+}
+.nav li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }

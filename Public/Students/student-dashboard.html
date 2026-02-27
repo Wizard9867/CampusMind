@@ -1,149 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>CampusMind - Student Dashboard</title>
     <link rel="stylesheet" href="student.css">
 </head>
 <body>
 
-<div class="layout">
+<div class="dashboard">
 
+    <!-- SIDEBAR -->
     <div class="sidebar">
-        <h2>CampusMind</h2>
-        <div class="subtitle">Student Portal</div>
+        <div class="brand-box">
+            <h2>CampusMind</h2>
+            <span>Student Portal</span>
+        </div>
 
-        <a href="student-dashboard.html" class="nav-item active">Dashboard</a>
-        <a href="collections.html" class="nav-item">My Collections</a>
-        <a href="search.html" class="nav-item">Search</a>
-        <a href="profile.html" class="nav-item">Profile</a>
+        <ul class="nav">
+            <li class="active">Dashboard</li>
+            <li>
+                <a href="search.html">Search</a>
+            </li>
+            <li>
+                <a href="collections.html">Collections</a></li>
+            <li>Profile</li>
+        </ul>
 
         <div class="logout">Logout</div>
     </div>
 
-    <div class="main-content">
+    <!-- MAIN CONTENT -->
+    <div class="main">
 
-        <h1>Hello, Alex</h1>
-        <p style="opacity:0.7; margin-bottom:40px;">
-            Welcome back to your learning workspace.
-        </p>
-
-        <div class="dashboard-grid">
-
-            <div class="left-column">
-
-                <div class="card">
-                    <h3>⭐ Recommended for You</h3>
-                    <br>
-                    <p><strong>Advanced Neural Networks</strong></p>
-                    <small>Lecture Note</small><br><br>
-
-                    <p><strong>Quantum Computing Basics</strong></p>
-                    <small>Video</small><br><br>
-
-                    <p><strong>Ethics in AI</strong></p>
-                    <small>Article</small>
-                </div>
-
-                <div class="card">
-                    <h3>🕒 Recently Viewed</h3>
-                    <br>
-                    <p><strong>Data Structures 101</strong></p>
-                    <small>2 hours ago</small><br><br>
-
-                    <p><strong>Calculus II Final Review</strong></p>
-                    <small>Yesterday</small>
-                </div>
-
-                <div class="card">
-                    <h3>📘 Your Semester</h3>
-                    <br>
-
-                    <p>Computer Science 301</p>
-                    <div style="background:rgba(255,255,255,0.1); height:8px; border-radius:10px; margin:6px 0 15px;">
-                        <div style="width:80%; height:100%; background:#9d4edd; border-radius:10px;"></div>
-                    </div>
-
-                    <p>Linear Algebra</p>
-                    <div style="background:rgba(255,255,255,0.1); height:8px; border-radius:10px; margin:6px 0 15px;">
-                        <div style="width:60%; height:100%; background:#9d4edd; border-radius:10px;"></div>
-                    </div>
-
-                    <p>Physics II</p>
-                    <div style="background:rgba(255,255,255,0.1); height:8px; border-radius:10px;">
-                        <div style="width:70%; height:100%; background:#9d4edd; border-radius:10px;"></div>
-                    </div>
-                </div>
-
+        <!-- HEADER -->
+        <div class="top-section">
+            <div>
+                <h1>Welcome, Rohit </h1>
+                <p>Track your learning journey and uploads.</p>
             </div>
 
-            <div class="right-column">
+            <div class="semester-box">
+                <span>Current Semester</span>
+                <h3>Spring 2026</h3>
+            </div>
+        </div>
 
-                <div class="card">
-                    <h4>My Uploads</h4>
-                    <br>
-                    <h2>3 Files</h2>
-                </div>
+        <!-- STATS -->
+        <div class="stats-row">
 
-                <div class="card">
-                    <h4>Faculty Resources</h4>
-                    <br>
-                    <h2>12 Files</h2>
-                </div>
+            <div class="stat-card">
+                <h2>12</h2>
+                <p>Notes Uploaded</p>
+            </div>
 
-                <div class="card">
-                    <h4>Current Semester</h4>
-                    <br>
-                    <h2>Spring 2026</h2>
-                </div>
+            <div class="stat-card">
+                <h2>86%</h2>
+                <p>Avg Quiz Score</p>
+            </div>
 
+            <div class="stat-card">
+                <h2>24h</h2>
+                <p>Study Hours</p>
             </div>
 
         </div>
 
-        <h2 style="margin-top:70px; margin-bottom:25px;">
-            📊 Learning Analytics
-        </h2>
-
-        <div class="analytics-grid">
-
-            <div class="analytics-card">
-                <p>Hours Spent</p>
-                <h2>24.5</h2>
-                <small>+12%</small>
+        <!-- RECENT ACTIVITY -->
+        <div class="recent-card">
+            <div class="recent-header">
+                <h2>Recent Activity</h2>
+                <span>View All</span>
             </div>
 
-            <div class="analytics-card">
-                <p>Resources Read</p>
-                <h2>142</h2>
-                <small>+5%</small>
+            <div class="activity-item">
+                <p><strong>Linear Algebra Notes</strong></p>
+                <span class="upload-info">Uploaded 2 hours ago</span>
             </div>
 
-            <div class="analytics-card">
-                <p>Notes Created</p>
-                <h2>18</h2>
-                <small>+2</small>
+            <div class="activity-item">
+                <p><strong>Data Structures Assignment</strong></p>
+                <span class="upload-info">Submitted yesterday</span>
             </div>
 
-            <div class="analytics-card">
-                <p>Avg. Quiz Score</p>
-                <h2>92%</h2>
-                <small>+3%</small>
+            <div class="activity-item">
+                <p><strong>Physics Lab Report</strong></p>
+                <span class="upload-info">Uploaded 3 days ago</span>
             </div>
-            <div style="margin-top:50px;" class="card">
-    <h3>Learning Activity Overview</h3>
-    <br>
-    <canvas id="analyticsChart" height="100"></canvas>
-</div>
-
 
         </div>
 
     </div>
-
 </div>
-
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="student.js"></script>
 
 </body>
 </html>

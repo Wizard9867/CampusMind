@@ -1,61 +1,542 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Search</title>
-    <link rel="stylesheet" href="student.css">
+    <meta charset="UTF-8">
+    <title>CampusMind | Search</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Root & Reset (matches your style.css) ── */
+        :root {
+            --light-cream: #FAE5D8;
+            --soft-rose: #DFB6B2;
+            --muted-plum: #824D69;
+            --deep-purple: #522959;
+            --dark-violet: #2A114B;
+            --black-plum: #180018;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--light-cream);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #180018, #2A114B, #522959, #180018);
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+        }
+        @keyframes gradientMove {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+        body::before { background: #824D69; top: -100px; left: -100px; }
+        body::after  { background: #DFB6B2; bottom: -150px; right: -150px; }
+
+        /* ── Layout ── */
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 270px;
+            padding: 45px 25px;
+            background: rgba(42,17,75,0.45);
+            backdrop-filter: blur(25px);
+            border-right: 1px solid rgba(255,255,255,0.08);
+            box-shadow: inset 0 0 40px rgba(255,255,255,0.03);
+            flex-shrink: 0;
+        }
+        .sidebar h2 { font-weight: 600; margin-bottom: 5px; }
+        .portal { font-size: 13px; color: var(--soft-rose); margin-bottom: 40px; }
+        .sidebar nav a {
+            display: block;
+            padding: 13px 16px;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--soft-rose);
+            transition: all 0.35s ease;
+        }
+        .sidebar nav a:hover {
+            background: rgba(255,255,255,0.08);
+            color: var(--light-cream);
+            transform: translateX(6px);
+        }
+        .sidebar nav a.active {
+            background: linear-gradient(135deg, #824D69, #522959);
+            color: var(--light-cream);
+            box-shadow: 0 0 15px rgba(130,77,105,0.6);
+        }
+
+        /* ── Main ── */
+        main {
+            flex: 1;
+            padding: 60px 80px;
+            margin-left: 20px;
+        }
+
+        /* ── Search Bar ── */
+        .search-bar {
+            margin-bottom: 45px;
+            position: relative;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 20px 30px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: var(--light-cream);
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4), inset 0 0 8px rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        .search-bar input::placeholder { color: rgba(250,229,216,0.45); }
+        .search-bar input:focus {
+            border-color: var(--muted-plum);
+            box-shadow: 0 0 25px rgba(130,77,105,0.6);
+        }
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #824D69, #522959);
+            border: none;
+            border-radius: 12px;
+            color: var(--light-cream);
+            padding: 11px 26px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .search-btn:hover {
+            box-shadow: 0 0 18px rgba(130,77,105,0.7);
+            transform: translateY(-50%) translateY(-2px);
+        }
+
+        /* ── Search Layout ── */
+        .search-layout { display: flex; gap: 35px; }
+
+        /* ── Filters ── */
+        .filters {
+            width: 280px;
+            flex-shrink: 0;
+        }
+        .filters.card {
+            padding: 30px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5), inset 0 0 25px rgba(255,255,255,0.05);
+            height: fit-content;
+        }
+        .filters h3 { margin-bottom: 20px; font-weight: 600; }
+        .filter-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--soft-rose);
+            font-size: 14px;
+        }
+        .filters label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .filters label input[type="checkbox"] { accent-color: var(--muted-plum); margin-right: 6px; }
+        .filters select {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--light-cream);
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            backdrop-filter: blur(20px);
+            outline: none;
+            cursor: pointer;
+        }
+        .filters select option { background: #2A114B; color: #FAE5D8; }
+
+        /* ── Results ── */
+        .results { flex: 1; }
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--soft-rose);
+        }
+        .results-header h3 { color: var(--light-cream); font-size: 18px; }
+
+        /* ── AI Summary Banner ── */
+        .ai-banner {
+            display: none;
+            border-radius: 20px;
+            padding: 26px 28px;
+            margin-bottom: 28px;
+            background: rgba(130,77,105,0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(130,77,105,0.35);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(130,77,105,0.15);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn .4s ease;
+        }
+        .ai-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #824D69, #DFB6B2, #824D69);
+        }
+        .ai-banner-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .ai-pulse {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--soft-rose);
+            box-shadow: 0 0 0 0 rgba(223,182,178,0.5);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%   { box-shadow: 0 0 0 0 rgba(223,182,178,0.5); }
+            70%  { box-shadow: 0 0 0 8px rgba(223,182,178,0); }
+            100% { box-shadow: 0 0 0 0 rgba(223,182,178,0); }
+        }
+        .ai-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--soft-rose);
+            font-weight: 600;
+        }
+        .ai-summary-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--light-cream);
+            margin-bottom: 16px;
+        }
+        .ai-concepts-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--soft-rose);
+            margin-bottom: 10px;
+        }
+        .ai-concepts { display: flex; flex-wrap: wrap; gap: 8px; }
+        .concept-tag {
+            background: rgba(130,77,105,0.25);
+            border: 1px solid rgba(223,182,178,0.25);
+            color: var(--soft-rose);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .ai-loading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--soft-rose);
+            font-size: 14px;
+        }
+        .loading-dots span {
+            display: inline-block;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--soft-rose);
+            animation: blink 1.2s infinite both;
+            margin: 0 2px;
+        }
+        .loading-dots span:nth-child(2) { animation-delay: .2s; }
+        .loading-dots span:nth-child(3) { animation-delay: .4s; }
+        @keyframes blink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+
+        /* ── Result Cards ── */
+        .result-card {
+            background: rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.04);
+            transition: all 0.35s ease;
+            position: relative;
+            animation: fadeIn .4s ease both;
+        }
+        .result-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.7), 0 0 25px rgba(130,77,105,0.5);
+        }
+        .result-top {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            align-items: center;
+        }
+        .badge { padding: 4px 10px; border-radius: 8px; font-weight: 500; font-size: 12px; }
+        .badge.pdf   { background: #824D69; }
+        .badge.image { background: #3a7d6b; }
+        .badge.video { background: #4b6cb7; }
+        .badge.notes { background: #9b59b6; }
+        .date { color: var(--soft-rose); }
+
+        .result-card h2 { font-size: 17px; margin-bottom: 8px; font-weight: 600; }
+        .result-card p  { color: var(--soft-rose); font-size: 14px; line-height: 1.6; margin-bottom: 14px; }
+
+        .tags { margin-bottom: 4px; }
+        .tags span {
+            background: rgba(255,255,255,0.08);
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        .view-btn {
+            margin-top: 18px;
+            padding: 11px 22px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #824D69, #522959);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(130,77,105,0.7);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--soft-rose);
+        }
+        .empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 16px; opacity: .5; }
+
+        @keyframes fadeIn {
+            from { opacity:0; transform: translateY(12px); }
+            to   { opacity:1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
 <div class="layout">
 
-    <div class="sidebar">
-        <h2>UniSearch AI</h2>
-        <div class="subtitle">Student Portal</div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>CampusMind</h2>
 
-        <a href="student-dashboard.html" class="nav-item">Dashboard</a>
-        <a href="collections.html" class="nav-item">My Collections</a>
-        <a href="search.html" class="nav-item active">Search</a>
-        <a href="profile.html" class="nav-item">Profile</a>
+        <nav>
+            <a href="student-dashboard.html">Dashboard</a>
+            <a href="search.html" class="active">Search</a>
+            <a href="collections.html">Collections</a>
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </aside>
 
-        <div class="logout">Logout</div>
-    </div>
+    <!-- Main -->
+    <main>
 
-    <div class="main-content">
-
-        <h1>Search Resources</h1>
-
-        <input type="text"
-               id="searchInput"
-               placeholder="Search resources..."
-               oninput="searchResources()"
-               style="margin:20px 0; padding:10px; width:300px; border-radius:8px; border:none;">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search resources, topics, or courses... (press Enter)">
+            <button class="search-btn" id="searchBtn">Search</button>
+        </div>
 
         <div class="search-layout">
 
-            <div class="filter-panel">
+            <!-- Filters -->
+            <div class="filters card">
                 <h3>Filters</h3>
-                <br>
 
-                <strong>Topic</strong><br>
-                <input type="checkbox" value="AI" onchange="searchResources()"> AI<br>
-                <input type="checkbox" value="Math" onchange="searchResources()"> Math<br>
-                <input type="checkbox" value="Physics" onchange="searchResources()"> Physics<br><br>
+                <p class="filter-title">Department</p>
+                <label><input type="checkbox" value="Computer Science"> Computer Science</label>
+                <label><input type="checkbox" value="Mathematics"> Mathematics</label>
+                <label><input type="checkbox" value="Electronics"> Electronics</label>
+                <label><input type="checkbox" value="Data Science"> Data Science</label>
 
-                <strong>Content Type</strong><br>
-                <input type="checkbox" value="PDF" onchange="searchResources()"> PDF<br>
-                <input type="checkbox" value="PPT" onchange="searchResources()"> PPT<br>
-                <input type="checkbox" value="Video" onchange="searchResources()"> Video<br>
+                <p class="filter-title">Resource Type</p>
+                <select id="filterType">
+                    <option value="All">All</option>
+                    <option value="PDF">PDF</option>
+                    <option value="Video">Video</option>
+                    <option value="Image">Image</option>
+                    <option value="Notes">Notes</option>
+                </select>
+
+                <p class="filter-title">Year</p>
+                <select id="filterYear">
+                    <option value="0">All Years</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2024">2024</option>
+                </select>
             </div>
 
-            <div class="results-column" id="searchResults">
+            <!-- Results -->
+            <div class="results">
+                <div class="results-header">
+                    <h3>Search Results</h3>
+                    <span id="resultsCount">8 resources</span>
+                </div>
+
+                <!-- AI Banner -->
+                <div class="ai-banner" id="aiBanner">
+                    <div class="ai-banner-header">
+                        <div class="ai-pulse"></div>
+                        <span class="ai-label">🤖 AI Topic Summary</span>
+                    </div>
+                    <div id="aiContent"></div>
+                </div>
+
+                <!-- Cards -->
+                <div id="cardsContainer"></div>
             </div>
 
         </div>
-
-    </div>
-
+    </main>
 </div>
 
-<script src="student.js"></script>
+<script>
+const DB = [
+    { id:1, title:"Foundations of Machine Learning", desc:"Lecture notes covering regression, classification, and evaluation metrics with practical examples.", type:"PDF", dept:"Computer Science", tags:["CS301","ML","Lecture Notes"], date:"Oct 12, 2025", year:2025 },
+    { id:2, title:"Deep Learning Model Architecture", desc:"Visual diagram explaining convolution layers, activation flow, and training pipeline.", type:"Image", dept:"Computer Science", tags:["CS402","Deep Learning","Diagram"], date:"Oct 18, 2025", year:2025 },
+    { id:3, title:"Gradient Descent Explained", desc:"Recorded lecture explaining optimization techniques with animated visualization examples.", type:"Video", dept:"Computer Science", tags:["AI","Optimization","Lecture"], date:"Nov 02, 2025", year:2025 },
+    { id:4, title:"Neural Network Quick Revision", desc:"Compact summary sheet covering forward propagation, backpropagation, and loss functions.", type:"Notes", dept:"Computer Science", tags:["Revision","NN","Exam Prep"], date:"Sep 20, 2025", year:2025 },
+    { id:5, title:"Linear Algebra for Data Science", desc:"Comprehensive notes on vectors, matrices, eigenvalues and their applications in ML.", type:"PDF", dept:"Mathematics", tags:["MATH201","Linear Algebra","Foundation"], date:"Aug 15, 2025", year:2025 },
+    { id:6, title:"Python for Data Analysis", desc:"Hands-on tutorial with Pandas, NumPy, and Matplotlib for data wrangling and visualization.", type:"Notes", dept:"Data Science", tags:["DS101","Python","Tutorial"], date:"Sep 05, 2025", year:2025 },
+    { id:7, title:"Database Systems – ER Diagrams", desc:"Slides and diagrams covering entity-relationship modelling and normalization forms.", type:"PDF", dept:"Computer Science", tags:["CS202","DBMS","Slides"], date:"Jul 30, 2025", year:2025 },
+    { id:8, title:"Signal Processing Fundamentals", desc:"Audio lecture series on Fourier transforms, filtering, and sampling theorem.", type:"Video", dept:"Electronics", tags:["EC301","DSP","Lecture"], date:"Oct 28, 2025", year:2025 }
+];
+
+const AI_KNOWLEDGE = {
+    "machine learning": { summary: "Machine Learning is a core branch of Artificial Intelligence that enables systems to learn patterns from data and make predictions without being explicitly programmed. It encompasses supervised learning, unsupervised learning, and reinforcement learning. It is foundational to modern engineering applications including image recognition, NLP, and recommendation systems.", concepts: ["Supervised Learning", "Regression & Classification", "Model Evaluation", "Overfitting", "Feature Engineering"] },
+    "ml": { summary: "Machine Learning (ML) provides computers with the ability to learn from experience. Key algorithms include linear regression, decision trees, SVMs, and neural networks. Mastering ML fundamentals is essential for any engineering student venturing into AI or data science.", concepts: ["Training & Testing", "Loss Functions", "Hyperparameters", "Cross-Validation", "Bias-Variance Tradeoff"] },
+    "neural network": { summary: "Neural Networks are computational models inspired by the human brain, consisting of interconnected layers of neurons that process and transform data. They form the backbone of Deep Learning and excel at image classification, language generation, and speech recognition. Understanding forward propagation and backpropagation is essential.", concepts: ["Perceptron", "Activation Functions", "Backpropagation", "Weights & Biases", "Deep vs Shallow Networks"] },
+    "deep learning": { summary: "Deep Learning uses multi-layered neural networks to automatically learn hierarchical representations from raw data. Architectures like CNNs, RNNs, and Transformers have revolutionised computer vision, speech processing, and NLP. It excels when large datasets and high computational power are available.", concepts: ["CNN", "RNN", "Transformer", "Transfer Learning", "Batch Normalization"] },
+    "gradient descent": { summary: "Gradient Descent is the fundamental optimization algorithm used to train ML models by iteratively minimising a loss function. It computes the gradient of the loss with respect to each parameter and updates parameters in the opposite direction. Variants like SGD and Adam are widely used to improve convergence.", concepts: ["Learning Rate", "SGD", "Adam Optimizer", "Momentum", "Convergence"] },
+    "python": { summary: "Python is the dominant language in data science and AI due to its simplicity and rich ecosystem. Libraries like NumPy and Pandas handle numerical computation, while Matplotlib enables visualization. Mastering Python is the first step for any student entering data science or ML.", concepts: ["NumPy", "Pandas", "Matplotlib", "Scikit-learn", "Jupyter Notebooks"] },
+    "linear algebra": { summary: "Linear Algebra is the mathematical foundation of modern ML and data science. Vectors, matrices, dot products, and eigenvalues are used directly in algorithms like PCA, SVD, and neural networks. A strong grasp allows engineers to understand and optimize ML algorithms at a deeper level.", concepts: ["Vectors & Matrices", "Matrix Multiplication", "Eigenvalues", "SVD", "PCA"] },
+    "database": { summary: "Database Systems are the backbone of data storage in software engineering. ER modelling designs the logical structure of a database, while normalization ensures integrity. SQL and NoSQL databases serve different use cases and are integral to web apps, enterprise systems, and data pipelines.", concepts: ["ER Modelling", "Normalization", "SQL", "Primary & Foreign Keys", "ACID Properties"] },
+    "signal processing": { summary: "Signal Processing deals with the analysis and manipulation of signals like audio, video, and sensor data. Fourier Transforms decompose signals into frequency components, enabling filtering, compression, and feature extraction. It is foundational in electronics, telecom, and audio/image processing.", concepts: ["Fourier Transform", "Sampling Theorem", "Filters (FIR/IIR)", "Frequency Domain", "Convolution"] },
+    "optimization": { summary: "Optimization finds the best solution from feasible options by minimising or maximising an objective function. In ML, optimization algorithms adjust model parameters to minimize prediction error. Techniques range from classic gradient-based methods to modern adaptive optimizers like Adam.", concepts: ["Objective Function", "Gradient Methods", "Convex Optimization", "Learning Rate Scheduling", "Local vs Global Minima"] },
+    "exam": { summary: "Preparing for engineering exams requires a structured approach: focus on core concepts, practice problem-solving, and review past patterns. For AI/ML topics, understand the intuition behind algorithms, not just formulas. Quick revision notes and concept maps are highly effective for last-minute review.", concepts: ["Revision Strategy", "Key Formulas", "Concept Mapping", "Practice Problems", "Time Management"] }
+};
+
+function getAISummary(query) {
+    const q = query.toLowerCase().trim();
+    for (const key of Object.keys(AI_KNOWLEDGE)) {
+        if (q.includes(key) || key.includes(q)) return AI_KNOWLEDGE[key];
+    }
+    return {
+        summary: `Showing academic resources related to "${query}". These materials have been curated from the CampusMind repository and are aligned with engineering curriculum standards. Browse the results below and use filters to narrow down by department, type, or year.`,
+        concepts: ["Academic Resources", "Curriculum Aligned", "Multi-modal Content", "Faculty Curated"]
+    };
+}
+
+function filterDB(query) {
+    const q = query.toLowerCase();
+    const checkedDepts = [...document.querySelectorAll('.filters input[type="checkbox"]:checked')].map(cb => cb.value);
+    const typeVal = document.getElementById('filterType').value;
+    const yearVal = parseInt(document.getElementById('filterYear').value);
+    return DB.filter(r => {
+        const matchQ = !query || r.title.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q) || r.tags.some(t => t.toLowerCase().includes(q)) || r.dept.toLowerCase().includes(q);
+        const matchDept = !checkedDepts.length || checkedDepts.includes(r.dept);
+        const matchType = !typeVal || typeVal === 'All' || r.type === typeVal;
+        const matchYear = !yearVal || r.year === yearVal;
+        return matchQ && matchDept && matchType && matchYear;
+    });
+}
+
+function badgeClass(type) {
+    return { PDF:'pdf', Image:'image', Video:'video', Notes:'notes' }[type] || 'pdf';
+}
+
+function renderCards(resources) {
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = '';
+    document.getElementById('resultsCount').textContent = `${resources.length} resource${resources.length !== 1 ? 's' : ''}`;
+    if (!resources.length) {
+        container.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><p>No resources matched your search.<br>Try different keywords or adjust filters.</p></div>`;
+        return;
+    }
+    resources.forEach((r, i) => {
+        const card = document.createElement('div');
+        card.className = 'result-card';
+        card.style.animationDelay = `${i * 0.07}s`;
+        card.innerHTML = `
+            <div class="result-top">
+                <span class="badge ${badgeClass(r.type)}">${r.type}</span>
+                <span class="date">${r.date}</span>
+            </div>
+            <h2>${r.title}</h2>
+            <p>${r.desc}</p>
+            <div class="tags">${r.tags.map(t => `<span>${t}</span>`).join('')}</div>
+            <button class="view-btn">View</button>`;
+        container.appendChild(card);
+    });
+}
+
+function showAIBanner(query) {
+    const banner = document.getElementById('aiBanner');
+    const content = document.getElementById('aiContent');
+    banner.style.display = 'block';
+    content.innerHTML = `<div class="ai-loading">Generating summary <div class="loading-dots"><span></span><span></span><span></span></div></div>`;
+    setTimeout(() => {
+        const ai = getAISummary(query);
+        content.innerHTML = `
+            <div class="ai-summary-text">${ai.summary}</div>
+            <div class="ai-concepts-label">Key Concepts</div>
+            <div class="ai-concepts">${ai.concepts.map(c => `<span class="concept-tag">${c}</span>`).join('')}</div>`;
+    }, 800);
+}
+
+function hideAIBanner() {
+    document.getElementById('aiBanner').style.display = 'none';
+}
+
+function doSearch() {
+    const query = document.getElementById('searchInput').value.trim();
+    const results = filterDB(query);
+    renderCards(results);
+    if (query) showAIBanner(query);
+    else hideAIBanner();
+}
+
+document.getElementById('searchBtn').addEventListener('click', doSearch);
+document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+document.querySelectorAll('.filters input, .filters select').forEach(el => el.addEventListener('change', doSearch));
+
+// Init
+renderCards(DB);
+</script>
 </body>
 </html>
