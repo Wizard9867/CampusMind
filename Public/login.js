@@ -40,7 +40,7 @@ async function login() {
             } else if (data.role === "faculty") {
                 window.location.href = "Facultys/facultydashboard.html";
             } else {
-                window.location.href = "admin/admin-dashboard.html";
+                window.location.href = "Admin/admin-dashboard.html";
             }
 
         } else {
