@@ -2,8 +2,8 @@
 coUk8k99vNcCe068FegjGW0E9SE
 
 Student :- 
-rohit@test.com
-123456
+"email": "rohitsalap@student.com",
+    "password": "Rohit@123",
 
 admin:-
 {

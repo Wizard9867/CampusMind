@@ -27,9 +27,9 @@ async function login() {
 
         if (response.ok) {
 
-            if (data.role !== selectedRole) {
-                document.getElementById("error").innerText = "Role mismatch!";
-                return;
+            if (data.role.toLowerCase() !== selectedRole.toLowerCase()) {
+            document.getElementById("error").innerText = "Role mismatch!";
+            return;
             }
 
             localStorage.setItem("token", data.token);
@@ -38,7 +38,7 @@ async function login() {
             if (data.role === "student") {
                 window.location.href = "Students/student-dashboard.html";
             } else if (data.role === "faculty") {
-                window.location.href = "facultys/facultydashboard.html";
+                window.location.href = "Facultys/facultydashboard.html";
             } else {
                 window.location.href = "admin/admin-dashboard.html";
             }
