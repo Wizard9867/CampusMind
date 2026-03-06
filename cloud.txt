@@ -11,5 +11,5 @@ admin:-
     "password": "Salap@123"
 }
 teacher:-
- "email": "maithili034@gmail.com",
-  "password": "Maithili@123"
+"email": "maithilitalawadekar@teacher.com",
+    "password": "Maithili@123"

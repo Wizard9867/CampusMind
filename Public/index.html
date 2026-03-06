@@ -6,22 +6,48 @@
 </head>
 <body>
 
-<div class="login-card">
-    <h1>Welcome Back</h1>
-    <p class="subtitle">Access your academic portal</p>
+<div class="container">
 
-    <div class="role-toggle">
-        <button class="role-btn active" onclick="setRole('student', this)">Student</button>
-        <button class="role-btn" onclick="setRole('faculty', this)">Faculty</button>
-        <button class="role-btn" onclick="setRole('admin', this)">Admin</button>
+    <!-- LEFT SIDE -->
+    <div class="left-panel">
+
+        <h2 class="brand">
+            <span class="logo-dot"></span>
+            CampusMind
+        </h2>
+
+        <img src="illustration.png" class="illustration">
+
+        <p class="tagline">
+            Smart Academic Management Portal
+        </p>
+
     </div>
 
-    <input type="email" id="email" placeholder="Email Address" required>
-    <input type="password" id="password" placeholder="Password" required>
 
-    <button class="login-btn" onclick="login()">Sign In →</button>
+    <!-- RIGHT SIDE -->
+    <div class="right-panel">
 
-    <p id="error" class="error"></p>
+        <div class="login-card">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Access your academic portal</p>
+
+            <div class="role-toggle">
+                <button class="role-btn active" onclick="setRole('student', this)">Student</button>
+                <button class="role-btn" onclick="setRole('faculty', this)">Faculty</button>
+                <button class="role-btn" onclick="setRole('admin', this)">Admin</button>
+            </div>
+
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <button class="login-btn" onclick="login()">Sign In →</button>
+
+            <p id="error" class="error"></p>
+        </div>
+
+    </div>
+
 </div>
 
 <script src="login.js"></script>
