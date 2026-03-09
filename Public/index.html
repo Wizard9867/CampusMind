@@ -1,52 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>CampusMind Login</title>
-    <link rel="stylesheet" href="login.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusMind - Login</title>
+
+<link rel="stylesheet" href="login.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
+
 <body>
 
 <div class="container">
 
-    <!-- LEFT SIDE -->
-    <div class="left-panel">
+<div class="form-section">
 
-        <h2 class="brand">
-            <span class="logo-dot"></span>
-            CampusMind
-        </h2>
+<div class="logo-container">
+<img src="campusmind-logo-removebg-preview.png">
+</div>
 
-        <img src="Background1.jpeg" class="illustration">
+<h2>Welcome Back!!</h2>
 
-        <p class="tagline">
-            Smart Academic Management Portal
-        </p>
+<!-- ROLE SELECTOR -->
 
-    </div>
+<div class="role-selector">
+
+<button class="role-btn active" onclick="setRole('student', this)">
+Student
+</button>
+
+<button class="role-btn" onclick="setRole('faculty', this)">
+Faculty
+</button>
+
+<button class="role-btn" onclick="setRole('admin', this)">
+Admin
+</button>
+
+</div>
+
+<!-- EMAIL -->
+
+<div class="input-group">
+<label>Email</label>
+<input id="email" type="email" placeholder="email@gmail.com">
+</div>
+
+<!-- PASSWORD -->
+
+<div class="input-group">
+<label>Password</label>
+<input id="password" type="password" placeholder="Enter your password">
+</div>
+
+<!-- ERROR MESSAGE -->
+
+<p id="error" style="color:red; margin-bottom:10px;"></p>
+
+<div class="forgot-pass">
+<a href="#">Forgot Password?</a>
+</div>
+
+<!-- LOGIN BUTTON -->
+
+<button class="btn-primary" onclick="login()">
+Login
+</button>
+
+<div class="social-login">
+
+<div class="social-text">or</div>
+
+<div class="social-icons">
+<i class="fab fa-google"></i>
+<i class="fab fa-facebook"></i>
+<i class="fab fa-apple"></i>
+</div>
+
+<p class="switch-form">
+Don't have an account?
+<a href="Signup.html">Sign Up</a>
+</p>
+
+</div>
+
+</div>
 
 
-    <!-- RIGHT SIDE -->
-    <div class="right-panel">
+<div class="visual-section">
 
-        <div class="login-card">
-            <h1>Welcome Back</h1>
-            <p class="subtitle">Access your academic portal</p>
+<div class="arch-shape"></div>
 
-            <div class="role-toggle">
-                <button class="role-btn active" onclick="setRole('student', this)">Student</button>
-                <button class="role-btn" onclick="setRole('faculty', this)">Faculty</button>
-                <button class="role-btn" onclick="setRole('admin', this)">Admin</button>
-            </div>
+<img
+src="https://ouch-cdn2.icons8.com/P5_A7n9o26E6S723o0O97Zp1B0L-A4o3kP1_Xyv_5k8/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvOTYw/LzZkY2IzMWI3LWEw/ODMtNDZlMi1hZmI0/LTFhN2QyNzg0OTI4/OC5zdmc.png"
+class="illustration">
 
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="password" id="password" placeholder="Password" required>
-
-            <button class="login-btn" onclick="login()">Sign In →</button>
-
-            <p id="error" class="error"></p>
-        </div>
-
-    </div>
+</div>
 
 </div>
 

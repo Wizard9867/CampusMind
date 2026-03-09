@@ -51,3 +51,8 @@ async function login() {
         document.getElementById("error").innerText = "Server error";
     }
 }
+document.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        login();
+    }
+});
