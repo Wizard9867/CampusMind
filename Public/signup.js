@@ -6,9 +6,11 @@ const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
 const role = document.getElementById("role").value;
 
+const name = firstname + " " + lastname;
+
 try {
 
-const response = await fetch("https://campusmind-8r5t.onrender.com/Signup", {
+const response = await fetch("https://campusmind-8r5t.onrender.com/register", {
 
 method: "POST",
 
@@ -17,8 +19,7 @@ headers: {
 },
 
 body: JSON.stringify({
-firstname,
-lastname,
+name,
 email,
 password,
 role
@@ -30,7 +31,7 @@ const data = await response.json();
 
 if(response.ok){
 
-alert("Account created successfully!");
+alert("Account created successfully");
 
 window.location.href = "login.html";
 

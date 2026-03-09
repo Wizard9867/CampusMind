@@ -1,36 +1,143 @@
-<div class="input-group">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusMind - Sign Up</title>
+
+<link rel="stylesheet" href="login.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form-section">
+
+<div class="logo-container">
+<img src="CampusMindlogo.jpeg" alt="CampusMind Logo">
+</div>
+
+<h2>Create Your Account</h2>
+
+
+<!-- NAME ROW -->
+
+<div style="display:flex; gap:10px;">
+
+<div class="input-group" style="flex:1;">
 <label>First Name</label>
 <input id="firstname" type="text" placeholder="First Name">
 </div>
 
-<div class="input-group">
+<div class="input-group" style="flex:1;">
 <label>Last Name</label>
 <input id="lastname" type="text" placeholder="Last Name">
 </div>
+
+</div>
+
+
+<!-- EMAIL -->
 
 <div class="input-group">
 <label>Email</label>
 <input id="email" type="email" placeholder="Email">
 </div>
 
+
+<!-- PASSWORD -->
+
 <div class="input-group">
 <label>Password</label>
 <input id="password" type="password" placeholder="Password">
 </div>
 
+
+<!-- ROLE -->
+
 <div class="input-group">
+
 <label>Select Role</label>
 
 <select id="role">
+
 <option value="student">Student</option>
 <option value="faculty">Faculty</option>
-<option value="admin">Admin</option>
+
+
 </select>
 
 </div>
 
-<p id="error" style="color:red;"></p>
+
+<!-- ERROR MESSAGE -->
+
+<p id="error" style="color:red; margin-bottom:10px;"></p>
+
+
+<!-- SIGNUP BUTTON -->
 
 <button class="btn-primary signup-btn" onclick="signup()">
+
 Sign Up
+
 </button>
+
+
+
+<!-- SOCIAL LOGIN -->
+
+<div class="social-login">
+
+<div class="social-text">or</div>
+
+<div class="social-icons">
+
+<i class="fab fa-google"></i>
+<i class="fab fa-facebook"></i>
+<i class="fab fa-apple"></i>
+
+</div>
+
+
+<p class="switch-form">
+
+Already have an account?
+
+<a href="login.html">Login</a>
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- VISUAL SECTION -->
+
+<div class="visual-section">
+
+<div class="arch-shape"></div>
+
+<img
+src="https://ouch-cdn2.icons8.com/P5_A7n9o26E6S723o0O97Zp1B0L-A4o3kP1_Xyv_5k8/rs:fit:368:368/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvOTYw/LzZkY2IzMWI3LWEw/ODMtNDZlMi1hZmI0/LTFhN2QyNzg0OTI4/OC5zdmc.png"
+class="illustration"
+alt="Student Illustration">
+
+</div>
+
+</div>
+
+
+<script src="signup.js"></script>
+
+</body>
+</html>
